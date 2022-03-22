@@ -1,0 +1,134 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-image: url(../images/abstract-white-background-free-vector.jpg);  
+    background-size: 100%;
+}
+
+#HeaderContainer{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    background-color: rgba(214,248,205,.93);
+    border-radius: 10px;
+    padding: 10px;
+    margin: 15px;
+    text-align: center;
+}
+
+/* might not need this (make it a div instead of a button) */
+.btn-primary{
+    background-color: green;
+    border: none;
+    width: 100%;
+
+}
+.btn-primary:hover{
+    background-color: darkgreen;
+}
+
+/* -------------------------------------------------------------- */
+
+.list-card{
+    position: relative;
+    background-color: rgba(214,248,205,.93);
+
+    width: 300px;
+    height: 200px;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 6px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.list-container{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.list-title{
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+
+.img-container{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.img-container img{
+    width: 30%;
+    object-fit: contain;
+}
+
+
+.open-button {
+    background-color: rgba(214,248,205,.93);
+    color: darkgreen;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    opacity: 0.8;
+    position: fixed;
+    bottom: 23px;
+    right: 28px;
+    width: 200px;
+    border-radius: 10px;
+}
+
+.reimb-form-popup {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    right: 15px;
+    border: 8px solid rgba(214,248,205,.93);
+    border-radius: 10px;
+    z-index: 9;
+}
+
+.form-container {
+    background-color: white;
+    max-width: 300px;
+    padding: 10px;
+    justify-content: space-between;
+    
+}
+
+.form-container input[type=number], .form-container select{
+    width: 100%;
+    padding: 5px;
+    border: none;
+    background: #f1f1f1;
+    margin-bottom: 20px;
+}
+
+
+.form-container input[type=number]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+.form-container .btn {
+    background-color: darkgreen;
+    color: white;
+    padding: 10px ;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom:10px;
+    opacity: 0.8;
+}
+
+.form-container .cancel {
+    background-color: red;
+}
+
+.form-container .btn:hover, .open-button:hover {
+    opacity: 1;
+}

@@ -1,0 +1,44 @@
+.registerBox{
+    
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 800px;
+    padding: 40px;
+    background: rgba(214,248,205,.93);  
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.5);
+    border-radius: 10px;
+    font-family: 'Roboto', sans-serif;
+
+}
+
+
+
+body{
+    background-image: url(../images/money.jpeg);
+    
+}
+
+#regPageNavbar {
+    display: flex;
+    margin: auto;
+    background-color: rgba(214,248,205,.93); 
+    
+}
+
+#registerBtn {
+    background-color: darkgreen;
+    border: none;
+    
+}
+
+#registerBtn:hover{
+    background-color: green;
+    transition: .25s;
+}
+
+

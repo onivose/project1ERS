@@ -1,0 +1,104 @@
+
+body{
+    margin: 0;
+    padding: 0;
+    background-image: url(./images/money.jpeg);
+    
+}
+
+.loginBox{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 550px;
+    padding: 40px;
+    background: rgba(214,248,205,.93);  
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.5);
+    border-radius: 10px;
+}
+
+.loginBox h2 {
+    margin: 0 0 30px;
+    padding: 0;
+    text-align: center;
+}
+
+.loginBox .inputBox {
+    position: relative;
+}
+
+.loginBox .inputBox input {
+    width: 100%;
+    padding: 10px 0;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid rgb(5, 5, 5);
+    outline: none;
+    background: transparent;
+
+}
+
+.loginBox .inputBox label{
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 16px;
+    pointer-events: none;
+    transition: .25s;
+}
+
+.loginBox .inputBox input:focus ~ label,
+.loginBox .inputBox input:valid ~ label
+{
+    top: -16px;
+    left: 0;
+    color: darkgreen;
+    font-size: 12px;
+}
+
+.loginFormBtns{
+    display: flex;
+    justify-content: space-between;
+}
+
+#loginBtn{
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    background-color:darkgreen;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+
+}
+
+#registerBtn{
+    background: transparent;
+    border: none;
+    outline: none;
+    color: darkgreen;
+    background-color:#fff;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#loginBtn:hover {
+    background-color: green;
+    transition: 0.25s;
+}
+
+#registerBtn:hover {
+    background-color: rgb(221, 224, 226);
+    transition: 0.25s;
+}
+
+#message {
+    color: red;
+    margin-bottom: 2px;
+}
