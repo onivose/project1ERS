@@ -8,7 +8,8 @@ document.getElementById("register-form").addEventListener("submit", async functi
     let passwordInputElem = document.getElementById("inputPassword");
     let firstnameInputElem = document.getElementById("inputFirstName");
     let lastnameInputElem = document.getElementById("inputLastName");
-    let emailInputElem = document.getElementById("inputEmail")
+    let emailInputElem = document.getElementById("inputEmail");
+    let roleInputElem = document.getElementById("inputRole");
 
     //get values from the input elements and put it into an object
     let user = {
@@ -16,8 +17,10 @@ document.getElementById("register-form").addEventListener("submit", async functi
         password: passwordInputElem.value,
         firstname: firstnameInputElem.value,
         lastname: lastnameInputElem.value,
-        email: emailInputElem.value
+        email: emailInputElem.value,
+        roleId: roleInputElem.value
     }
+    console.log(user)
 
     //send the http request
     let response = await fetch(`${domain}/register`, {

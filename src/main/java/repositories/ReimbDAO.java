@@ -13,5 +13,4 @@ public interface  ReimbDAO {
     public List<Reimbursement> getReimbursementsGivenStatusId(Integer statusId);
     public List<Reimbursement> getReimbursementsGivenTypeId(Integer statusId);
 
-
 }

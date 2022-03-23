@@ -9,40 +9,31 @@ body{
     display: flex;
     position: relative;
     flex-direction: column;
-    background-color: rgba(214,248,205,.93);
+    background-color: rgba(189, 243, 247, 0.93);
     border-radius: 10px;
     padding: 10px;
     margin: 15px;
     text-align: center;
 }
 
-/* might not need this (make it a div instead of a button) */
-.btn-primary{
-    background-color: green;
-    border: none;
-    width: 100%;
-
-}
-.btn-primary:hover{
-    background-color: darkgreen;
-}
 
 /* -------------------------------------------------------------- */
 
-.list-card{
+.info-card{
     position: relative;
-    background-color: rgba(214,248,205,.93);
+    background-color: rgba(189, 243, 247, 0.93);
 
-    width: 300px;
+    width: 520px;
     height: 200px;
-    padding: 15px;
-    margin: 10px;
+    padding: 10px;
+    margin: 5px;
     border-radius: 6px;
 
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
+
 
 .list-container{
     display: flex;
@@ -69,10 +60,10 @@ body{
 
 
 .open-button {
-    background-color: rgba(214,248,205,.93);
-    color: darkgreen;
+    background-color: rgba(189, 243, 247, 0.93);;
+    color: black;
     padding: 16px 20px;
-    border: none;
+    border-color: black;
     cursor: pointer;
     opacity: 0.8;
     position: fixed;
@@ -87,7 +78,7 @@ body{
     position: fixed;
     bottom: 0;
     right: 15px;
-    border: 8px solid rgba(214,248,205,.93);
+    border: 8px solid rgba(189, 243, 247, 0.93);;
     border-radius: 10px;
     z-index: 9;
 }
@@ -115,7 +106,7 @@ body{
 }
 
 .form-container .btn {
-    background-color: darkgreen;
+    background-color: #0dcaf0;
     color: white;
     padding: 10px ;
     border: none;
@@ -123,6 +114,7 @@ body{
     width: 100%;
     margin-bottom:10px;
     opacity: 0.8;
+    z-index: 100;
 }
 
 .form-container .cancel {
@@ -131,4 +123,9 @@ body{
 
 .form-container .btn:hover, .open-button:hover {
     opacity: 1;
+}
+
+#message {
+    color: green;
+    margin-bottom: 2px;
 }

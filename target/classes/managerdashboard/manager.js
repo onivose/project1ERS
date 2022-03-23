@@ -10,8 +10,12 @@ window.onload = function(){
     let messageElem = document.getElementById("welcomeMessage")
     messageElem.innerText = `Welcome User Id: ${userId}`
 
+    getAllforAll()
 
-    async function getAllforAll()
+}
+
+async function getAllforAll(){
+        
 }
 
 async function filterByStatus(){

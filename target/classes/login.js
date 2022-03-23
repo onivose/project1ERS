@@ -36,7 +36,7 @@ document.getElementById("login-form").addEventListener("submit", async function 
         if (responseBody.data.manager == true){
             window.location = `${domain}/managerdashboard/?userId=${responseBody.data.id}`
         } else {
-            window.location = `${domain}/employeedashboard?userId=${responseBody.data.id}/`
+            window.location = `${domain}/employeedashboard?userId=${responseBody.data.id}`
         }
 
     }

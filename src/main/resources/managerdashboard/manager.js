@@ -10,8 +10,12 @@ window.onload = function(){
     let messageElem = document.getElementById("welcomeMessage")
     messageElem.innerText = `Welcome User Id: ${userId}`
 
+    getAllforAll()
 
-    async function getAllforAll()
+}
+
+async function getAllforAll(){
+        
 }
 
 async function filterByStatus(){
@@ -22,14 +26,7 @@ async function filterByType(){
     
 }
 
+async function changeStatus(event){
+    
+}
 
-function openForm() {
-    let infoCard = document.getElementById("infoCard")
-    infoCard.style.display = "flex";
-    infoCard.style.flexDirection;
-    infoCard.style.justify-content;
-}
-  
-function closeForm() {
-    document.getElementById("infoCard").style.display = "none";
-}

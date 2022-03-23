@@ -30,7 +30,7 @@ public class ReimbController {
 
         reimbService.createReimbursement(reimbToCreate);
 
-        context.json(new JsonResponse(true, "Reimbursement created for user " + reimbToCreate.getAuthorUsername(), reimbToCreate));
+        context.json(new JsonResponse(true, "Reimbursement successfully created!", reimbToCreate));
     } // Done
 
     /**
