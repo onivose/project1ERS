@@ -64,7 +64,7 @@ function createReimbInfoCard(reimb){
         <div class="list-title">Reimbursement Id : ${reimb.reimbId}</div>
         <div class="list-title">Type: ${reimb.type}</div>
         <div class="list-title">Amount : $${reimb.amount}</div>
-        <div class="list-title">Time Submitted : ${timeSubmitted}</div> 
+        <div class="list-title">Date Submitted : ${timeSubmitted}</div> 
         <div class="list-title">Status: ${statusString}</div>
 
     </div>`

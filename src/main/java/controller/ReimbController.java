@@ -41,10 +41,10 @@ public class ReimbController {
     }
 
     /**
-     * Gets passed a User object from the body of http request as JSON.
+     * Gets passed a User ID from query parameter.
      * If user is a manager, retrieve all past reimbursements for all employees.
      * Else, only retrieve past reimbursements for that specific employee.
-     * If the user cannot be passed from the body, returns "Invalid User" as a JSON.
+     *
      * @param context Handler object parameter for Javalin implementation
      * */
     public void getAll (Context context){
