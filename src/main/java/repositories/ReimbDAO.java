@@ -6,7 +6,7 @@ import models.User;
 import java.util.List;
 
 public interface  ReimbDAO {
-    public void createReimbursement (Reimbursement reimbursement);
+    public Boolean createReimbursement (Reimbursement reimbursement);
     public List<Reimbursement> getReimbursementsForAllUsers();
     public List<Reimbursement> getReimbursementsGivenUser(Integer userId);
     public void changeReimbursementStatus(Integer reimbId, Integer newStatusId); // approving or denying requests

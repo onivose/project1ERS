@@ -28,10 +28,17 @@ public class ReimbController {
     public void createReimbursement (Context context){
         Reimbursement reimbToCreate = context.bodyAsClass(Reimbursement.class);
 
-        reimbService.createReimbursement(reimbToCreate);
 
-        context.json(new JsonResponse(true, "Reimbursement successfully created!", reimbToCreate));
-    } // Done
+
+        Reimbursement reimbFromDb = reimbService.createReimbursement(reimbToCreate);
+        if (reimbFromDb == null){
+            context.json(new JsonResponse(false, "An error ahas occurred, please try again", null));
+
+        } else{
+            context.json(new JsonResponse(true, "Reimbursement successfully created!", reimbFromDb));
+        }
+
+    }
 
     /**
      * Gets passed a User object from the body of http request as JSON.
@@ -43,21 +50,21 @@ public class ReimbController {
     public void getAll (Context context){
         UserService userService = new UserService();
 
-        User currentUser = context.bodyAsClass(User.class);
-        User loginAttempt = userService.validateCredentials(currentUser.getUsername(), currentUser.getPassword());
+        //get user id in path param instead of request body
+        Integer userId = Integer.parseInt(context.queryParam("userId"));
 
-        if (loginAttempt==null){
-            context.json(new JsonResponse(false,"Invalid User", null));
+        // retrieve user given id
+        User currentUser = userService.getUserGivenId(userId);
+
+        //check if user is a manager
+        if (currentUser.isManager()) {
+
+            context.json(new JsonResponse(true, "All Reimbursements for All Users: ", reimbService.getAllForAllUsers(currentUser)));
         } else {
 
-            if (currentUser.isManager()) {
-
-                context.json(new JsonResponse(true, "All Reimbursements for All Users: ", reimbService.getAllForAllUsers(currentUser)));
-            } else {
-
-                context.json(new JsonResponse(true, "All Past Reimbursements for User: " + currentUser.getUsername(), reimbService.getAllGivenUser(currentUser.getId())));
-            }
+            context.json(new JsonResponse(true, "All Past Reimbursements for User: " + currentUser.getUsername(), reimbService.getAllGivenUser(currentUser.getId())));
         }
+
 
 
     } // Done

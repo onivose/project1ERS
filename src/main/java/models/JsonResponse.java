@@ -1,9 +1,9 @@
 package models;
 
 public class JsonResponse {
-    Boolean success;
-    String message;
-    Object data;
+    private Boolean success;
+    private String message;
+    private Object data;
 
     public JsonResponse() {
     }

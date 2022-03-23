@@ -99,4 +99,34 @@ public class UserDAOImpl implements UserDAO {
         return user;
     }
 
+    @Override
+    public User getUserGivenId(Integer id) {
+        User user = null;
+        try(Connection conn = ConnectionUtil.getConnection()){
+            String sql ="select * from ers_users where user_id = ?;";
+
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
+
+            ResultSet rs = ps.executeQuery();
+
+            while(rs.next()) {
+                user = new User(rs.getInt(1),   // userId
+                        rs.getString(2),        // username
+                        rs.getString(3),        // password
+                        rs.getString(4),        // firstname
+                        rs.getString(5),        // lastname
+                        rs.getString(6),        // email
+                        rs.getInt(7)            // role
+                );
+            }
+
+
+        } catch (SQLException sqle){
+            sqle.printStackTrace();
+        }
+
+        return user;
+    }
+
 }

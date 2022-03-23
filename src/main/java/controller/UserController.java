@@ -16,21 +16,7 @@ public class UserController {
         this.userService = new UserService();
     }
 
-    public void login (Context context){
-        JsonResponse jsonResponse;
 
-        User credentials = context.bodyAsClass(User.class);
-
-        User retrievedUser = userService.validateCredentials(credentials.getUsername(), credentials.getPassword());
-
-        if(retrievedUser == null){
-            jsonResponse = new JsonResponse(false, "Invalid Username or Password", null);
-        }else{
-            jsonResponse = new JsonResponse(true, "Login Successful", retrievedUser);
-        }
-
-        context.json(jsonResponse);
-    }
 
     /**
      * Gets passed a User object from the body of http request as JSON.

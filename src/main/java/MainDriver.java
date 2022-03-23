@@ -1,4 +1,5 @@
 import controller.ReimbController;
+import controller.SessionController;
 import controller.UserController;
 import io.javalin.Javalin;
 import io.javalin.http.staticfiles.Location;
@@ -17,18 +18,23 @@ public class MainDriver {
 
         UserController userController = new UserController();
         ReimbController reimbController = new ReimbController();
+        SessionController sessionController = new SessionController();
+
         Javalin app = Javalin.create(config -> {
             config.addStaticFiles("/", Location.CLASSPATH);
         }).start(7220);
 
         // ---------------------------------- ALL EMPLOYEES ------------------------------------------\\
+        // Session Controller Endpoints
+        app.post("/login", sessionController::login);
+        app.get("/session", sessionController::checkSession);
+        app.delete("session",sessionController::logout);
 
-        app.post("/login", userController::login);
+        // User Controller Endpoints
         app.post("/register", userController::createUser); //throws error if username or email taken already
 
-        //todo test reimb controller
-
-        app.get("/reimb/", reimbController::getAll); // get all for all employees or get all for one employee
+        // Reimbursement Controller Endpoints
+        app.get("/reimb", reimbController::getAll);
         app.post("/reimb/new", reimbController::createReimbursement);
 
         // ----------------------------- FINANCE MANAGERS ONLY ------------------------------------------\\

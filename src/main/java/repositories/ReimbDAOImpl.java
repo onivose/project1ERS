@@ -14,7 +14,7 @@ import java.util.List;
 public class ReimbDAOImpl implements ReimbDAO{
 
     @Override
-    public void createReimbursement(Reimbursement reimbursement) { //DML
+    public Boolean createReimbursement(Reimbursement reimbursement) { //DML
         try (Connection conn = ConnectionUtil.getConnection()){
 
             String sql = "insert into ers_reimbursement (reimb_amount, reimb_author_fk, reimb_type_id_fk) values (?,?,?);";
@@ -24,11 +24,12 @@ public class ReimbDAOImpl implements ReimbDAO{
             ps.setInt(2, reimbursement.getAuthorId());
             ps.setInt(3, reimbursement.getTypeId()); // 1 -> Lodging, 2 -> Food, 3 -> Travel
 
-            ps.executeUpdate();
+            return ps.executeUpdate() != 0;
 
-    } catch (SQLException sqle) {
+        } catch (SQLException sqle) {
             sqle.printStackTrace();
         }
+        return false;
 
     }
 

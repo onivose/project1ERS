@@ -1,25 +1,26 @@
-window.onload = function(){
+let user;
 
-    const params = new Proxy(new URLSearchParams(window.location.search), {
-        get: (searchParams, prop) => searchParams.get(prop),
-    });
+window.onload =  async function(){
 
-    userId = params.userId;
+    let response = await fetch(`${domain}/session`);
+
+    let responseBody = await response.json();
+
+    if(!responseBody.success){ // if a session was not found redirect to login
+        window.location = "../";
+    }
+
+    user = responseBody.data; 
 
     let messageElem = document.getElementById("welcomeMessage")
-    messageElem.innerText = `Welcome User Id: ${userId}`
+    messageElem.innerText = `Welcome ${user.firstname} ${user.lastname} ! Here are your past tickets:`
 
-    //getAllReimbursementsForUser()
+    getAllReimbursementsForUser()
 }
 
 async function getAllReimbursementsForUser(){
 
-    //let response = await fetch(`${domain}/list?userId=${userId}`);
-    let response = await fetch(`${domain}/reimb`, {
-        method: "GET",
-        // get user from session ???
-        body: JSON.stringify(user)
-    });
+    let response = await fetch(`${domain}/reimb?userId=${user.id}`);
 
     let responseBody = await response.json();
 
@@ -70,7 +71,9 @@ function createReimbInfoCard(reimb){
 
 }
 
-async function createNewReimb(event){ //WORKS!
+
+//creating a new reimbursement using the popup form
+async function createNewReimb(event){ 
     event.preventDefault();
 
     let newReimbAmountInputElem = document.getElementById("inputAmount");
@@ -78,7 +81,7 @@ async function createNewReimb(event){ //WORKS!
 
     let reimbToCreate = 
     {   amount : newReimbAmountInputElem.value, 
-        authorId : userId,
+        authorId : user.id,
         typeId : newReimbTypeInputElem.value
     }
 
@@ -100,15 +103,23 @@ async function createNewReimb(event){ //WORKS!
 
 }
 
-
 // for the pop up "Create New Reimbersement" form 
 function openForm() {
     document.getElementById("new-reimb").style.display = "block";
 }
-  
+
 function closeForm() {
     let messageElem = document.getElementById("message")
         messageElem.innerText = ""
     document.getElementById("new-reimb").style.display = "none";
 
+}
+
+//allows us to end our session and logout
+async function logout(){
+    let response = await fetch(`${domain}/session`, {
+        method: "DELETE"
+    });
+
+    window.location = "../";
 }

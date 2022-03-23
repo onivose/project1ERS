@@ -5,6 +5,7 @@ import models.User;
 import repositories.ReimbDAO;
 import repositories.ReimbDAOImpl;
 
+import java.util.Collections;
 import java.util.List;
 
 public class ReimbService {
@@ -23,8 +24,12 @@ public class ReimbService {
         return this.reimbDAO.getReimbursementsGivenUser(userId);
     }
 
-    public void createReimbursement (Reimbursement reimbursementToCreate){
-        this.reimbDAO.createReimbursement(reimbursementToCreate);
+    public Reimbursement createReimbursement (Reimbursement reimbursementToCreate){
+        if(this.reimbDAO.createReimbursement(reimbursementToCreate)){
+            List<Reimbursement> reimbs = reimbDAO.getReimbursementsGivenUser(reimbursementToCreate.getAuthorId());
+            return reimbs.get(reimbs.size()-1);
+        }
+        return null;
     }
 
     // --------------- FINANCE MANAGER SERVICES --------------------- \\

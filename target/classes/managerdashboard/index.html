@@ -40,7 +40,7 @@
               </li>
               
             </ul>
-            <a class="nav-link active" aria-current="page" href="../">Log Out</a>
+            <a class="nav-link active" aria-current="page" onclick="logout()" id="logoutbtn">Log Out</a>
           </div>
         </div>
     </nav>
@@ -60,7 +60,7 @@
             <div class="list-title">Time Submitted : 2022-03-13 17:23:52.769</div>
             <div class="list-title">Status: Pending</div>
 
-            <form id="ESForm" class="editStatusForm">
+            <form id="ESForm" class="editStatusForm" onsubmit="changeStatus(event)">
                 <label for="NewStatus"><div id="editStatus">Edit Reimbursement Status :</div></label>
 
                 <select id="changeStatus" name="NewStatus" required>

@@ -1,17 +1,21 @@
-window.onload = function(){
+let user;
 
-    const params = new Proxy(new URLSearchParams(window.location.search), {
-        get: (searchParams, prop) => searchParams.get(prop),
-    });
+window.onload =  async function(){
 
-    
-    userId = params.userId;
+    let response = await fetch(`${domain}/session`);
+
+    let responseBody = await response.json();
+
+    if(!responseBody.success){ // if a session was not found redirect to login
+        window.location = "../";
+    }
+
+    user = responseBody.data; 
 
     let messageElem = document.getElementById("welcomeMessage")
-    messageElem.innerText = `Welcome User Id: ${userId}`
+    messageElem.innerText = `Welcome ${user.firstname} ${user.lastname} !`
 
-    getAllforAll()
-
+    //getAllforAll()
 }
 
 async function getAllforAll(){
@@ -26,14 +30,16 @@ async function filterByType(){
     
 }
 
+async function changeStatus(event){
+    event.preventDefault();    
+}
 
-function openForm() {
-    let infoCard = document.getElementById("infoCard")
-    infoCard.style.display = "flex";
-    infoCard.style.flexDirection;
-    infoCard.style.justify-content;
+async function logout(){
+    let response = await fetch(`${domain}/session`, {
+        method: "DELETE"
+    });
+
+    window.location = "../";
+
 }
-  
-function closeForm() {
-    document.getElementById("infoCard").style.display = "none";
-}
+

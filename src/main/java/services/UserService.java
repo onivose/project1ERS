@@ -69,4 +69,9 @@ public class UserService {
 
     }
 
+
+    public User getUserGivenId(Integer userId){
+        return this.userDAO.getUserGivenId(userId);
+    }
+
 }
