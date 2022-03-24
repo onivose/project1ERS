@@ -40,8 +40,8 @@ public class MainDriver {
         // ----------------------------- FINANCE MANAGERS ONLY ------------------------------------------\\
 
         app.patch("/reimb/{reimbId}/changestatus/{statusId}", reimbController::changeStatus);
-        app.get("/reimb/filter/status/{statusId}",reimbController::filterByStatus);
-        app.get("/reimb/filter/type/{typeId}",reimbController::filterByType);
+        app.get("/reimb/filter/status",reimbController::filterByStatus);
+        app.get("/reimb/filter/type",reimbController::filterByType);
 
     }
 }

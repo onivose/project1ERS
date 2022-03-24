@@ -95,8 +95,14 @@ public class ReimbController {
      * @param context Handler object parameter for Javalin implementation.
      */
     public void filterByStatus(Context context) {
-        User currentUser = context.bodyAsClass(User.class);
-        Integer statusId = Integer.parseInt(context.pathParam("statusId"));
+        UserService userService = new UserService();
+
+        //get user id and status id in query param instead of request body
+        Integer userId = Integer.parseInt(context.queryParam("userId"));
+        Integer statusId = Integer.parseInt(context.queryParam("statusId"));
+
+        // retrieve user given id
+        User currentUser = userService.getUserGivenId(userId);
 
         if (currentUser.isManager()){
             List<Reimbursement> returnedList = reimbService.filterByStatusId(currentUser,statusId);
@@ -112,8 +118,15 @@ public class ReimbController {
      * @param context Handler object parameter for Javalin implementation.
      */
     public void filterByType(Context context) {
-        User currentUser = context.bodyAsClass(User.class);
-        Integer typeId = Integer.parseInt(context.pathParam("typeId"));
+        UserService userService = new UserService();
+
+        //get user id and status id in query param instead of request body
+        Integer userId = Integer.parseInt(context.queryParam("userId"));
+        Integer typeId = Integer.parseInt(context.queryParam("typeId"));
+
+        // retrieve user given id
+        User currentUser = userService.getUserGivenId(userId);
+
 
         if (currentUser.isManager()){
             List<Reimbursement> returnedList = reimbService.filterByTypeId(currentUser,typeId);

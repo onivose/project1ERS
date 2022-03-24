@@ -23,10 +23,10 @@ async function getAllforAll(){
 
     let responseBody = await response.json();
 
-    console.log(responseBody)
-
     let reimbursements = responseBody.data;
 
+    let listContainerElem = document.getElementById("list-container");
+    listContainerElem.innerText="";
 
     reimbursements.forEach(reimb => {
         createReimbInfoCard(reimb)
@@ -56,29 +56,6 @@ function createReimbInfoCard(reimb){
 
     timeSubmitted = new Date(reimb.timeSubmitted).toDateString()
 
-
-   /*  <div class="info-card" id="infoCard">
-            <div class="list-title">Reimbursement Id : 1</div>
-            <div class="list-title">Author User Id : 1</div>
-            <div class="list-title">Type: Food</div>
-            <div class="list-title">Amount : $500</div>
-            <div class="list-title">Time Submitted : 2022-03-13 17:23:52.769</div>
-            <div class="list-title">Status: Pending</div>
-
-            <form id="ESForm" class="editStatusForm" onsubmit="changeStatus(event)">
-                <label for="NewStatus"><div id="editStatus">Edit Reimbursement Status :</div></label>
-
-                <select id="changeStatus" name="NewStatus" required>
-                    <option value=""> Choose...</option>
-                    <option value="2">Approved</option>
-                    <option value="3">Denied</option>
-                    <option value="1">Pending</option>
-                </select>
-                
-                <button id="ESFBtn" type="submit" class="btn btn-info">Change Status</button>
-            </form>
-        </div> */
-
     listCardElem.innerHTML = `
     <div id="infoCard">
             <div class="list-title">Reimbursement Id : ${reimb.reimbId}</div>
@@ -107,16 +84,46 @@ function createReimbInfoCard(reimb){
 
 }
 
-async function filterByStatus(){
+async function filterByStatus(event){
+    event.preventDefault();
+    let statusfilterInputElem = document.getElementById("statusFilterInput")
+
+    let response = await fetch(`${domain}/reimb/filter/status?userId=${user.id}&statusId=${statusfilterInputElem.value}`);
+
+    let responseBody = await response.json();
+
+    let reimbursements = responseBody.data;
+
+    let listContainerElem = document.getElementById("list-container");
+    listContainerElem.innerText="";
+    
+    reimbursements.forEach(reimb => {
+        createReimbInfoCard(reimb)
+    });
 
 }
 
-async function filterByType(){
+async function filterByType(event){
+    event.preventDefault();
+    let typefilterInputElem = document.getElementById("typeFilterInput")
+
+    let response = await fetch(`${domain}/reimb/filter/type?userId=${user.id}&typeId=${typefilterInputElem.value}`);
+
+    let responseBody = await response.json();
+
+    let reimbursements = responseBody.data;
+
+    let listContainerElem = document.getElementById("list-container");
+    listContainerElem.innerText="";
     
+    reimbursements.forEach(reimb => {
+        createReimbInfoCard(reimb)
+    });
 }
 
 async function changeStatus(event){
     event.preventDefault();
+    console.log("status change btn hit")
     console.log(reimb.id)    
 }
 

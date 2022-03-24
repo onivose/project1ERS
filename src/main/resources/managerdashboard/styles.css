@@ -16,28 +16,6 @@ body{
     text-align: center;
 }
 
-.filterNavBtns{
-    display: flex;
-    flex-direction: column;
-}
-
-.filters {
-    color: darkgreen;
-    margin: 0;
-    padding: 3px;
-}
-
-.filters input[type=number]{
-    border: none;
-    border-bottom: 1px solid #0dcaf0;
-}
-
-.filtersTxt {
-    margin: 0;
-    padding: 3px;
-}
-
-
 .info-card{
     position: relative;
     background-color: rgba(190, 193, 219, 0.93);
@@ -73,22 +51,12 @@ body{
     font-size: 20px;
     font-weight: bold;
     color: blue;
-    
     margin-bottom: 1px;
-    
 }
 
 #ESFBtn{
     width: 100%;
     margin-top: 18px;
-}
-
-
-
-
-
-.editStatusForm .btn btn-info {
-    width: 100%;
 }
 
 
@@ -104,31 +72,6 @@ body{
     font-weight: bold;
 }
 
-
-.img-container{
-    display: flex;
-    justify-content: space-evenly;
-}
-
-.img-container img{
-    width: 30%;
-    object-fit: contain;
-}
-
-.btn-primary{
-    background-color: green;
-    border: none;
-    width: 100%;
-
-}
-.btn-primary:hover{
-    background-color: darkgreen;
-}
-
-.btn-danger {
-    width: 100%;
-}
-
 #changeStatus{
     width: 100%;
     padding: 5px;
@@ -139,4 +82,36 @@ body{
 
 #logoutbtn{
     cursor: pointer;
+}
+
+.filter-forms-container{
+    height: 70px;
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: rgba(190, 193, 219, 0.93);
+    border-radius: 10px;
+    padding: 10px;
+    margin: 15px;
+    text-align: center;
+    
+}
+
+.filter-inputs{
+    border: none;
+    border-bottom: 1px solid #0dcaf0;
+    width: 100px;
+    background: transparent;
+    padding: 10px;
+}
+
+.filter-form-title{
+    margin-top: 15px;
+    color: blue;
+    font-weight: bold;
+}
+
+.filter-inputs:focus{
+    outline: none
 }

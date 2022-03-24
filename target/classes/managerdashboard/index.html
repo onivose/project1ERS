@@ -19,27 +19,6 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Filter Reimbursements
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <div class="filtersTxt">Status ID</div>
-                      <form class="filters" id="statusPick">
-                          <input type="number" min="1" max="3" required>
-                          <button class="btn btn-sm btn-outline-info" type="submit" id="statusFilterBtn" onclick="filterByStatus()">Filter</button>
-                      </form>
-                      <div class="filtersTxt">Type ID</div>
-                        <form class="filters" id="typePick">
-                            <input type="number" min="1" max="3" required>
-                            <button class="btn btn-sm btn-outline-info" type="submit" id="typeFilterBtn" onclick="filterByType()">Filter</button>
-                        </form>
-                    
-              </li>
-              
-            </ul>
             <a class="nav-link active" aria-current="page" onclick="logout()" id="logoutbtn">Log Out</a>
           </div>
         </div>
@@ -48,6 +27,22 @@
     <div id="HeaderContainer">
         <h1 id="dashboardHeader">Manager Dashboard</h1>
         <div id="welcomeMessage"></div>
+    </div>
+
+    <div class="filter-forms-container"> 
+        <div class="filter-form-title">Filter Reimbursements by Status:</div>
+        <form class="filters" id="statusPick" onsubmit="filterByStatus(event)">
+            <input type="number" min="1" max="3" id="statusFilterInput" class="filter-inputs" placeholder="Status ID" required > 
+            <button class="btn btn-sm btn-info" type="submit" id="statusFilterBtn" name="statusFilterForm" >Filter</button>
+            <button class="btn btn-sm btn-danger" onclick="getAllforAll()" type="reset">Cancel</button>
+        </form>
+        <div class="filter-form-title">Filter Reimbursements by Type:</div>
+        <form class="filters" id="typePick" onsubmit="filterByType(event)">
+            <input type="number" min="1" max="3"  id="typeFilterInput" class="filter-inputs"  placeholder="Type ID" required> 
+            <button class="btn btn-sm btn-info" type="submit" id="typeFilterBtn" name="typeFilterForm" >Filter</button>
+            <button class="btn btn-sm btn-danger" onclick="getAllforAll()" type="reset">Cancel</button>
+        </form>
+        
     </div>
 
     <div class="list-container" id="list-container">

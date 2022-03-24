@@ -25,6 +25,9 @@ async function getAllforAll(){
 
     let reimbursements = responseBody.data;
 
+    let listContainerElem = document.getElementById("list-container");
+    listContainerElem.innerText="";
+
     reimbursements.forEach(reimb => {
         createReimbInfoCard(reimb)
     });
@@ -81,16 +84,46 @@ function createReimbInfoCard(reimb){
 
 }
 
-async function filterByStatus(){
+async function filterByStatus(event){
+    event.preventDefault();
+    let statusfilterInputElem = document.getElementById("statusFilterInput")
+
+    let response = await fetch(`${domain}/reimb/filter/status?userId=${user.id}&statusId=${statusfilterInputElem.value}`);
+
+    let responseBody = await response.json();
+
+    let reimbursements = responseBody.data;
+
+    let listContainerElem = document.getElementById("list-container");
+    listContainerElem.innerText="";
+    
+    reimbursements.forEach(reimb => {
+        createReimbInfoCard(reimb)
+    });
 
 }
 
-async function filterByType(){
+async function filterByType(event){
+    event.preventDefault();
+    let typefilterInputElem = document.getElementById("typeFilterInput")
+
+    let response = await fetch(`${domain}/reimb/filter/type?userId=${user.id}&typeId=${typefilterInputElem.value}`);
+
+    let responseBody = await response.json();
+
+    let reimbursements = responseBody.data;
+
+    let listContainerElem = document.getElementById("list-container");
+    listContainerElem.innerText="";
     
+    reimbursements.forEach(reimb => {
+        createReimbInfoCard(reimb)
+    });
 }
 
 async function changeStatus(event){
     event.preventDefault();
+    console.log("status change btn hit")
     console.log(reimb.id)    
 }
 
