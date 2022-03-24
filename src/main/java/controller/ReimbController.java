@@ -76,9 +76,12 @@ public class ReimbController {
      * @param context Handler object parameter for Javalin implementation
      */
     public void changeStatus(Context context) {
-        User currentUser = context.bodyAsClass(User.class);
-        Integer reimbId = Integer.parseInt(context.pathParam("reimbId"));
-        Integer newStatusId = Integer.parseInt(context.pathParam("statusId"));
+        UserService userService = new UserService();
+        Integer userId = Integer.parseInt(context.queryParam("userId"));
+        Integer reimbId = Integer.parseInt(context.queryParam("reimbId"));
+        Integer newStatusId = Integer.parseInt(context.queryParam("statusId"));
+
+        User currentUser = userService.getUserGivenId(userId);
 
         if (currentUser.isManager()){
             reimbService.changeStatus(currentUser,reimbId,newStatusId);

@@ -58,27 +58,27 @@ function createReimbInfoCard(reimb){
 
     listCardElem.innerHTML = `
     <div id="infoCard">
-            <div class="list-title">Reimbursement Id : ${reimb.reimbId}</div>
-            <div class="list-title">Author User Id : ${reimb.authorId}</div>
-            <div class="list-title">Author Username : ${reimb.authorUsername}</div>
-            <div class="list-title">Type: ${reimb.type}</div>
-            <div class="list-title">Amount : $${reimb.amount}</div>
-            <div class="list-title">Time Submitted : ${timeSubmitted}</div>
-            <div class="list-title">Status: ${statusString}</div>
+        <div class="list-title">Reimbursement Id : ${reimb.reimbId}</div>
+        <div class="list-title">Author User Id : ${reimb.authorId}</div>
+        <div class="list-title">Author Username : ${reimb.authorUsername}</div>
+        <div class="list-title">Type: ${reimb.type}</div>
+        <div class="list-title">Amount : $${reimb.amount}</div>
+        <div class="list-title">Time Submitted : ${timeSubmitted}</div>
+        <div class="list-title">Status: ${statusString}</div>
 
-            <form id="ESForm" class="editStatusForm" onsubmit="changeStatus(event)">
-                <label for="NewStatus"><div id="editStatus">Edit Reimbursement Status :</div></label>
+        <form class="ESForm" id="editStatusForm-${reimb.reimbId}" onsubmit="changeStatus(event)" >
+            <div id="editStatus">Edit Reimbursement Status :</div>
 
-                <select id="changeStatus" name="NewStatus" required>
-                    <option value=""> Choose...</option>
-                    <option value="2">Approved</option>
-                    <option value="3">Denied</option>
-                    <option value="1">Pending</option>
-                </select>
-                
-                <button id="ESFBtn" type="submit" class="btn btn-info">Change Status</button>
-            </form>
-        </div> `
+            <select id="newStatus-${reimb.reimbId}" class="changeStatus" required>
+                <option value=""> Choose New Status...</option>
+                <option value="2">Approved</option>
+                <option value="3">Denied</option>
+                <option value="1">Pending</option>
+            </select>
+            
+            <button class="ESFBtn" type="submit" id="change-status-btn-${reimb.reimbId}" >Change Status</button>
+        </form>
+    </div> `
 
     listContainerElem.appendChild(listCardElem);
 
@@ -122,9 +122,25 @@ async function filterByType(event){
 }
 
 async function changeStatus(event){
-    event.preventDefault();
-    console.log("status change btn hit")
-    console.log(reimb.id)    
+    event.preventDefault()
+
+    //retrieving reimbursement id:
+    let changeStatusButton = event.target;
+    let reimbId = changeStatusButton.id.substring("editStatusForm-".length);
+
+    let statusIdElem = document.getElementById(`newStatus-${reimbId}`);
+    let statusId = statusIdElem.value;
+
+    // once i have the reimb id i can send a request to change the status
+    let response = await fetch(`${domain}/reimb/changestatus?userId=${user.id}&reimbId=${reimbId}&statusId=${statusId}`,{
+        method: "PATCH"
+    });
+
+    let responseBody = await response.json();
+
+    let reimbursements = responseBody.data;
+
+    getAllforAll()
 }
 
 //allows us to end our session and logout
