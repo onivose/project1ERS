@@ -35,7 +35,7 @@ public class UserService {
      * @param userToCreate passed from user controller
      * @return true if new user successfully created or false if username or email already taken
      */
-    public Boolean createUser(User userToCreate) { // doesn't pass the tests yet
+    public Boolean createUser(User userToCreate) {
         User userByUsername = userDAO.getUserGivenUsername(userToCreate.getUsername());
         User userByEmail = userDAO.getUserGivenEmail(userToCreate.getEmail());
 

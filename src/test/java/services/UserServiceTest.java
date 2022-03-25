@@ -105,7 +105,7 @@ class UserServiceTest {
 
         //assert
         Mockito.verify(userDAO, Mockito.times(0)).createUser(userToCreate);
-        assertTrue(actualOutput);
+        assertFalse(actualOutput);
     }
 
 
