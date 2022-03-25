@@ -16,10 +16,12 @@ public class MainDriver {
 
     public static void main(String[] args) {
 
+        // adding references to my controllers to be used later
         UserController userController = new UserController();
         ReimbController reimbController = new ReimbController();
         SessionController sessionController = new SessionController();
 
+        //initializing javalin server
         Javalin app = Javalin.create(config -> {
             config.addStaticFiles("/", Location.CLASSPATH);
         }).start(7220);

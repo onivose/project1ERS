@@ -28,7 +28,7 @@ public class UserController {
 
         User userToCreate = context.bodyAsClass(User.class);
 
-        jsonResponse = (userService.createUser(userToCreate) ? new JsonResponse(true, "User has been created", null)
+        jsonResponse = (userService.createUser(userToCreate) ? new JsonResponse(true, "User has been created", userToCreate)
                 : new JsonResponse(false, "Username or Email already taken", null));
 
         context.json(jsonResponse);

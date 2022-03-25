@@ -96,8 +96,8 @@ class UserServiceTest {
     @Test
     void createUserValidCredentials() {
         // arrange
-        User userToCreate = new User("Username", "password","firstName","lastName","sameEmail@email.com",1);
-        User expectedOutput = new User("differentUsername", "password1","Mr.","Name Jr.","differentEmail@email.com",2);
+        User userToCreate = new User("Username", "password","firstName","lastName","someEmail@email.com",1);
+        User expectedOutput = new User("differentUsername", "password1","Mr.","Name Jr.","aDifferentEmail@email.com",2);
         Mockito.when(userDAO.getUserGivenEmail(userToCreate.getEmail())).thenReturn(expectedOutput);
 
         //act
@@ -105,6 +105,7 @@ class UserServiceTest {
 
         //assert
         Mockito.verify(userDAO, Mockito.times(0)).createUser(userToCreate);
+        assertTrue(actualOutput);
     }
 
 

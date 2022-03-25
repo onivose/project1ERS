@@ -33,48 +33,51 @@
 
     <div class="registerBox">
         
-        <form class="row g-3" id="register-form">
-            <h2>Register New User</h2>
-            
-            <div class="col-md-6">
-              <label for="inputUsername4" class="form-label">Username</label>
-              <input type="text" class="form-control" id="inputUsername" required>
-            </div>
-            <div class="col-md-6">
-              <label for="inputPassword4" class="form-label">Password</label>
-              <input type="password" class="form-control" id="inputPassword" required> 
-            </div>
+      <form class="row g-3" id="register-form" onsubmit="registerUser(event)">
+          <h2>Register New User</h2>
+          
+          <div class="col-md-6">
+            <label for="inputUsername4" class="form-label">Username</label>
+            <input type="text" class="form-control" id="inputUsername" required>
+          </div>
 
-            <div class="col-md-6">
-                <label for="inputFname4" class="form-label">First Name</label>
-                <input type="text" class="form-control" id="inputFirstName" required>
-            </div>
-            <div class="col-md-6">
-                <label for="inputLastname4" class="form-label">Last Name</label>
-                <input type="text" class="form-control" id="inputLastName" required>
-            </div>
+          <div class="col-md-6">
+            <label for="inputPassword4" class="form-label">Password</label>
+            <input type="password" class="form-control" id="inputPassword" required> 
+          </div>
 
-            <div class="col-9">
-                    <label for="inputEmail" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="inputEmail" placeholder="example@email.com" required>
-            </div>
+          <div class="col-md-6">
+            <label for="inputFname4" class="form-label">First Name</label>
+            <input type="text" class="form-control" id="inputFirstName" required>
+          </div>
 
-            
-            <div class="col-3">
-              <label for="inputRole" class="form-label">Role</label>
+          <div class="col-md-6">
+            <label for="inputLastname4" class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="inputLastName" required>
+          </div>
+
+          <div class="col-9">
+            <label for="inputEmail" class="form-label">Email</label>
+            <input type="email" class="form-control" id="inputEmail" placeholder="example@email.com" required>
+          </div>
+
+          
+          <div class="col-3">
+            <label for="inputRole" class="form-label">Role</label>
               <select id="inputRole" class="form-select" required>
                 <option selected value="">Choose...</option>
                 <option value="1">Employee</option>
                 <option value="2">Finance Manager</option>
               </select>
-            </div>
-           
-            <div id="message"></div>
-            <div class="col-12">
-              <button type="submit" class="btn btn-success" id="registerBtn">Register</button>
-            </div>
+          </div>
+        
+          <div id="message"></div>
+          
+          <div class="col-12">
+            <button type="submit" class="btn btn-success" id="registerBtn">Register</button>
+          </div>
 
-          </form>
+        </form>
 
     </div>
 

@@ -13,6 +13,10 @@ import java.util.List;
 
 public class ReimbDAOImpl implements ReimbDAO{
 
+    /**
+     * @param reimbursement -> the reimbursement to create
+     * @return true if reimbursement successfully created, false otherwise
+     */
     @Override
     public Boolean createReimbursement(Reimbursement reimbursement) { //DML
         try (Connection conn = ConnectionUtil.getConnection()){
@@ -63,6 +67,11 @@ public class ReimbDAOImpl implements ReimbDAO{
         return reimbursementList;
     }
 
+    /**
+     * Gets passed user id and returns all the past reimbursements for that specific user
+     * @param userId
+     * @return
+     */
     @Override
     public List<Reimbursement> getReimbursementsGivenUser(Integer userId) {
         List<Reimbursement> reimbursementList = new ArrayList<>();

@@ -31,28 +31,37 @@ public class UserService {
         return user;
     }
 
-    public Boolean createUser(User userToCreate) { // doesn't pass the tests
+    /**
+     * @param userToCreate passed from user controller
+     * @return true if new user successfully created or false if username or email already taken
+     */
+    public Boolean createUser(User userToCreate) { // doesn't pass the tests yet
         User userByUsername = userDAO.getUserGivenUsername(userToCreate.getUsername());
         User userByEmail = userDAO.getUserGivenEmail(userToCreate.getEmail());
 
-        if (userByEmail == null || userByUsername == null){
+        if (userByUsername == null && userByEmail == null){
+            // both the username and email are available (they are not found in the database) -> create the user
+            this.userDAO.createUser(userToCreate);
+            return true;
+        } else {
+            // either the username is taken already or the email is taken already
             return false;
-        } else if (userByUsername.getUsername() == userToCreate.getUsername()){ // null pointer
+        }
+
+
+
+        // Alternate logics to try if above doesn't work:
+
+        /*if (userByEmail == null && userByUsername == null){
+            this.userDAO.createUser(userToCreate);
+            return true;
+        } else if (userByUsername.getUsername() == userToCreate.getUsername()){
             return false;
         } else if (userByEmail.getEmail() == userToCreate.getEmail()){
             return false;
         } else {
             this.userDAO.createUser(userToCreate);
             return true;
-        }
-
-
-
-        /*if (userByUsername == null && userByEmail == null){
-            this.userDAO.createUser(userToCreate);
-            return true;
-        } else {
-            return false;
         }*/
 
 

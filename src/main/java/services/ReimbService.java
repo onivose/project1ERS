@@ -57,7 +57,7 @@ public class ReimbService {
         else if (currentUser.isManager()) {  // if the user is a manager
             this.reimbDAO.changeReimbursementStatus(reimbId, newStatusId);
             return true;
-        } else { // user is not a manager and cannot change status
+        } else { // user is not a manager and cannot change reimbursement status
             return false;
         }
     }

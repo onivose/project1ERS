@@ -1,7 +1,9 @@
-/* function that runs when the page loads */
-document.getElementById("register-form").addEventListener("submit", async function (event){
+
+async function registerUser(event){
     //this is to stop the form from reloading 
     event.preventDefault();
+
+    console.log("form submitted");
     
     //retrieve input elements from the dom
     let usernameInputElem = document.getElementById("inputUsername");
@@ -42,4 +44,4 @@ document.getElementById("register-form").addEventListener("submit", async functi
     }
 
 
-})
+}
