@@ -5,23 +5,23 @@ Project 1
 The Expense Reimbursement System (ERS) will manage the process of reimbursing employees for expenses incurred while on company time. All employees in the company can login and submit requests for reimbursement and view their past tickets and pending requests. Finance managers can log in and view all reimbursement requests and past history for all employees in the company. Finance managers are authorized to approve and deny requests for expense reimbursement.
 
 ### State-chart Diagram (Reimbursement Statuses)
-
+![alt text](https://github.com/onivose/project1ERS/blob/main/Project1Specs/state-chart.jpg)
 
 
 ### Logical Model
-
+![alt text](https://github.com/onivose/project1ERS/blob/main/Project1Specs/logical.jpg)
 
 
 ### Physical Model
-
+![alt text](https://github.com/onivose/project1ERS/blob/main/Project1Specs/physical.jpg)
 
 
 ### Use Case Diagram
-
+![alt text](https://github.com/onivose/project1ERS/blob/main/Project1Specs/use-case.jpg)
 
 
 ### Activity Diagram
-
+![alt text](https://github.com/onivose/project1ERS/blob/main/Project1Specs/activity.jpg)
 
 
 ## Technical Requirements
