@@ -38,7 +38,7 @@ To-do list:
 
 ## Getting Started
 
-> You will need openjdk11 or later
+> Note: You will need openjdk11 or later
 
 ### Git Commands:
 
